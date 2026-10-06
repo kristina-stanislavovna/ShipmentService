@@ -2,10 +2,25 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Order order = new Order(11, 80, "Tashkent Chilonzar");
 
-        DeliveryService deliveryService = new DeliveryServiceImpl(order);
-        System.out.println(deliveryService.send(order));
+        List<Order> orders = List.of(new Order(11, 80, "Tashkent Chilonzar"),
+                new Order(12, 40, "Buhoro, Amir Timur 10"),
+                new Order(13, 50, "Angren 18-8"),
+                new Order(14, 80, "Tashkent, Bogsaroy 14"));
+
+
+        Cargo cargo = new Cargo(12, 55, "Samarckand Chexov 5");
+        List<Cargo> cargos = List.of(
+                new Cargo(203L, 117, "Uchtepa 24-3-50"),
+                new Cargo(204L, 66, "Yunus Obad 6-6"),
+                new Cargo(205L, 90, "Uchtepa 13-38")
+        );
+        DeliveryService deliveryService = new DeliveryServiceImpl(orders);
+        deliveryService.findById(13);
+        CargoService cargoService = new CargoServiceImpl(cargos);
+        cargoService.findById(204L);
+
+
 
 /*Бизнес-контекст
 Ваш интернет-магазин оформляет отправку товаров через собственный внутренний
@@ -22,5 +37,10 @@ public class Main {
 а внешняя служба требует передавать специальный объект адреса из их SDK.
 3 Имена и сигнатуры методов: Метод отправки во внешней
  библиотеке называется иначе и принимает другие аргументы, чем ваш внутренний интерфейс.*/
+
+
+
+
+
     }
 }
