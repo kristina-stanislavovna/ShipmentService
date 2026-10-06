@@ -15,10 +15,31 @@ public class Main {
                 new Cargo(204L, 66, "Yunus Obad 6-6"),
                 new Cargo(205L, 90, "Uchtepa 13-38")
         );
+
+        List<Client> clients = List.of(
+                new Client(1009, "Alex", 1200),
+                new Client(1232, "Marta", 900),
+                new Client(9839, "Oliver", 30)
+        );
+
+        List<Product> products = List.of(
+                new Product(8787, "Iphon pro 17", 1200),
+                new Product(6578, "Pi dji", 102),
+                new Product(7665, "iphon 14 pro", 600)
+        );
+
+
+
         DeliveryService deliveryService = new DeliveryServiceImpl(orders);
         deliveryService.findById(13);
         CargoService cargoService = new CargoServiceImpl(cargos);
         cargoService.findById(204L);
+
+        DeliveryTicketService ticketService = new DeliveryTicketServiceImpl();
+        DeliveryRequest deliveryRequest = new DeliveryRequest(11,100);
+        DeliveryResponse deliveryResponse = new DeliveryResponse(1, DeliveryResponceType.SUCCESS);
+
+
 
 
 
