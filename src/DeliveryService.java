@@ -1,3 +1,5 @@
 public interface DeliveryService {
-    String send(Order order);
+//    String send();
+
+    Order findById(int id);
 }

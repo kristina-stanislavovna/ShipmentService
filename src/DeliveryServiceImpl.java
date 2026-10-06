@@ -2,16 +2,30 @@ import java.util.List;
 
 public class DeliveryServiceImpl implements DeliveryService {
 
-    private Order order;
+    private List<Order> orders;
 
-    public DeliveryServiceImpl(Order order) {
-        this.order = order;
+    public DeliveryServiceImpl(List<Order> orders) {
+        this.orders = orders;
     }
+
+
 
 
     @Override
-    public String send(Order order) {
-        String s = "Id STICK: " + order.getOrderId();
-        return s;
+    public Order findById(int id) {
+        String str = "";
+        Order orderId = null;
+        for (Order order : orders) {
+            if (id == order.getOrderId()) {
+                orderId = order;
+                str = "<<<ticket dilevery>>> " + order.getOrderId();
+                System.out.println(str);
+
+            }
+        }
+        return orderId;
     }
+
+
+
 }
